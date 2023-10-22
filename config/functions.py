@@ -21,17 +21,38 @@ def cls():
 # //////////////////// Under Construction ////////////////////
 
 # ==================== Temporizador de Tempo de Execução de Funções ====================
-def w_ttef(f):
-    def w(*a, **k):
-        c = time()
-        r = f(*a, **k)
-        t = time()
+# def w_ttef(f):
+#     def w(*a, **k):
+#         c = time()
+#         r = f(*a, **k)
+#         t = time()
         
-        print(f"{f.__name__}({a}, {k}) -> {t-c} sec.")
-        return r
-    return w
+#         print(f"{f.__name__}({a}, {k}) -> {t-c} sec.")
+#         return r
+#     return w
 
 # ////////////////////////////////////////////////////////////
+
+
+# ==================== Retorna a quantidade de KBs que o programa está utilizando ====================
+def mug() -> float:
+    proc: Process = Process(getpid())
+    return proc.memory_info().rss / 1024
+
+
+class LazyImport:
+    def __init__(self, module_name: str, package_name: str | None = None):
+        self.module_name: str = module_name
+        self.package_name: str | None = package_name
+        self.__module: Any | None = None
+    
+    def __getattr__(self, attr: str) -> Any:
+        if self.__module is None:
+            if self.package_name is None:
+                self.__module = import_module(self.module_name)
+            else:
+                self.__module = import_module(self.module_name, self.package_name)
+        return getattr(self.__module, attr)
 
 
 # ==================== Calculadora de números primos ====================
@@ -68,7 +89,7 @@ def f_mmc(*nl: int) -> list:
         # outerloop_breaker, whileloop_breaker
         olb, wlb = False, True
         # biggest_divisor, product_of_divisors
-        bd, pod = 0, 1
+        bd = 0
     except: return []
     else:
         while True:
@@ -84,41 +105,33 @@ def f_mmc(*nl: int) -> list:
             for i, n in enumerate(nl):
                 if n%bd == 0: nl[i] = n/bd
             dl.append(bd)
-        for n in dl: pod*=n
-        return [*dl, pod]
+        return [*dl, reduce(lambda a, b: a * b, dl)]
 
 
 # ==================== Calculadora de MDC ====================
 @lru_cache()
-def f_mdc(*num_list: int) -> list:
+def f_mdc(*nl: int) -> list:
     try:
         # num_list
-        num_list: list = sorted(list(map(int, num_list)))
+        nl: list = sorted(list(map(int, nl)))
         # prime_list
-        prime_list: list = f_numerosprimos(num_list[-1])
+        pl: list = f_numerosprimos(nl[-1])
         # divisor_list
-        divisors_list: list = [1]
-        # outerloop_breaker, whileloop_breaker
-        outerloop_breaker, whileloop_breaker = False, True
-        # biggest_divisor, product_of_divisors
-        biggest_divisor, product_of_divisors = 0, 1
+        dl: list = []
     except: return []
     else:
-        
+        for i, n in enumerate(nl):
+            dl.append([1])
+            while True:
+                for p in pl:
+                    if n % p == 0:
+                        n = int(n/p)
+                        dl[i].append(p)
+                        break
+                if n == 1: break
+        dl = list(map(list, list(map(set, dl))))
+        dl = [sb + [1] * (max(len(sb) for sb in dl) - len(sb)) for sb in dl]
+        dl = np.array(sum(np.array(dl).tolist(), []))
+        dl = set(list(filter(lambda x: (np.count_nonzero(dl == x) >= len(nl)), dl)))
+        return [*dl, reduce(lambda a, b: a * b, dl)]
 
-        for number in set(divisors_list): 
-            product_of_divisors*=number
-
-        return [*set(divisors_list), product_of_divisors]
-print(f_mdc(18, 12, 4))
-print(f_mdc(2, 4, 3))
-
-# 18 = 2 * 3 * 3 -> 1, 2, 3
-# 12 = 2 * 2 * 3 -> 1, 2, 3
-# 4 = 2 * 2 -> 1, 2
-# MDC(18, 12, 4) = 1 * 2 = 2
-
-# 2 = 2 -> 1, 2
-# 4 = 2 * 2 -> 1, 2
-# 3 = 3 -> 1, 3
-# MDC(2, 4, 3) = 1

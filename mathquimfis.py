@@ -67,24 +67,30 @@ except: raise ImportError()
 
 # ==================== Matemática ====================
 try:
-    from modules.numerosprimos import NumerosPrimos
-    from modules.testeprimo import TestePrimo
-    from modules.fracaosimples import FracaoSimples
-    from modules.mmcemdc import MmcEMdc
+    #from modules.numerosprimos import NumerosPrimos
+    #from modules.testeprimo import TestePrimo
+    #from modules.fracaosimples import FracaoSimples
+    #from modules.mmcemdc import MmcEMdc
+
+    imp_numerosprimos = LazyImport("modules.numerosprimos")
+    imp_testeprimo = LazyImport("modules.testeprimo")
+    imp_fracaosimples = LazyImport("modules.fracaosimples")
+    imp_mmcmdc = LazyImport("modules.mmcemdc")
 except: raise ImportError()
 
 # ==================== Química ====================
 try:
-    from modules.gusmol import Gusmol
+    #from modules.gusmol import Gusmol
+    imp_gusmol = LazyImport("modules.gusmol")
 except: raise ImportError()
 
 
 # ========== Objetos ==========
-numerosPrimos = NumerosPrimos()
-testePrimo = TestePrimo()
-fracaoSimples = FracaoSimples()
-mmcEMdc = MmcEMdc()
-gusmol = Gusmol()
+obj_numerosprimos: Any | None = None
+obj_testeprimo   : Any | None = None
+obj_fracaosimples: Any | None = None
+obj_mmcmdc       : Any | None = None
+obj_gusmol       : Any | None = None
 
 choose: str = ""
 
@@ -110,30 +116,38 @@ if __name__ == "__main__":
                 if choose in CHOOSE_M_LIST or choose == '': break
             
             if choose == '1':
+                if obj_numerosprimos is None: obj_numerosprimos = imp_numerosprimos.NumerosPrimos()
+
                 while True:
                     cls()
-                    numerosPrimos.numerosprimos(input(NUMEROSPRIMOS_DIALOG_1))
+                    obj_numerosprimos.numerosprimos(input(NUMEROSPRIMOS_DIALOG_1))
 
                     if str(input(REPETIR)).lower()[0] != 's': break
 
             elif choose == '2':
+                if obj_testeprimo is None: obj_testeprimo = imp_testeprimo.TestePrimo()
+
                 while True:
                     cls()
-                    testePrimo.testeprimo(input(TESTEPRIMO_DIALOG_1))
+                    obj_testeprimo.testeprimo(input(TESTEPRIMO_DIALOG_1))
 
                     if str(input(REPETIR)).lower()[0] != 's': break
 
             elif choose == '3':
+                if obj_fracaosimples is None: obj_fracaosimples = imp_fracaosimples.FracaoSimples()
+
                 while True:
                     cls()
-                    fracaoSimples.fracaosimples(str(input(FRACAOSIMPLES_DIALOG_1)).lower())
+                    obj_fracaosimples.fracaosimples(str(input(FRACAOSIMPLES_DIALOG_1)).lower())
 
                     if str(input(REPETIR)).lower()[0] != 's': break
             
             elif choose == '4':
+                if obj_mmcmdc is None: obj_mmcmdc = imp_mmcmdc.MmcMdc()
+
                 while True:
                     cls()
-                    mmcEMdc.mmcemdc(str(input(MMCEMDC_DIALOG_1)).lower())
+                    obj_mmcmdc.mmcmdc(str(input(MMCEMDC_DIALOG_1)).lower())
 
                     if str(input(REPETIR)).lower()[0] != 's': break
 
@@ -143,11 +157,13 @@ if __name__ == "__main__":
         elif choose == '2':
             while True:
                 choose = str(input(MAIN_DIALOG_Q))
-                if choose in CHOOSE_Q_LIST or choose == '':break
+                if choose in CHOOSE_Q_LIST or choose == '': break
             
             if choose == '1':
+                if obj_gusmol is None: obj_gusmol = imp_gusmol.Gusmol()
+
                 while True:
                     cls()
-                    gusmol.gusmol(''.join(str(input(GUSMOL_DIALOG_1)).split()))
+                    obj_gusmol.gusmol(''.join(str(input(GUSMOL_DIALOG_1)).split()))
                     
                     if str(input(REPETIR)).lower()[0] != 's': break

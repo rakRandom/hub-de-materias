@@ -36,7 +36,7 @@ class FracaoSimples():
 
                 cls()
 
-                num_mdc = f_mdc(numerador, denominador)
+                num_mdc = f_mdc(numerador, denominador)[-1]
 
                 print(FRACAOSIMPLES_DIALOG_DP4
                       .format(numerador, denominador, int(numerador/num_mdc), int(denominador/num_mdc)))
@@ -52,11 +52,11 @@ class FracaoSimples():
             else:
                 numero = float(numero)
 
-                denominador = 10**(len(str(numero - int(numero))))
+                denominador = 10**(len(str(numero - int(numero))) - 2)
 
                 numerador = int(numero*denominador)
-
-                num_mdc = f_mdc(numerador, denominador)
+                
+                num_mdc = f_mdc(numerador, denominador)[-1]
 
                 cls()
                 input(FRACAOSIMPLES_DIALOG_ND2

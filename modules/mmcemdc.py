@@ -2,8 +2,8 @@ from config.functions import cls, f_mdc, f_mmc
 from config.constants import *
 
 
-class MmcEMdc():
-    def mmcemdc(self, numeros: str):
+class MmcMdc():
+    def mmcmdc(self, numeros: str):
         try:
             numero1, *_, numero2 = numeros.split(' ')
         except:
