@@ -1,3 +1,9 @@
+try:
+    from config.imports import BigNumber
+except:
+    from imports import BigNumber
+
+
 BARRIER = "================================================================================"
 
 REPETIR = "\nRepetir?:\n"
@@ -175,7 +181,7 @@ MMCEMDC_DIALOG_1 = BARRIER + """
 
 
 # Constante de Avogrado
-AVOGRADO = 6.02 * (10 ** 23)
+AVOGRADO = BigNumber("6.02") * BigNumber("10") ** BigNumber("23")
 
 
 # Tabela Periódica contendo a massa atômica de todos os elementos

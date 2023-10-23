@@ -81,10 +81,10 @@ class Gusmol():
                         # Lançando o resultado
                         cls()
                         print(GUSMOL_DIALOG_LR1
-                            .format(mol, molecula, peso_molecular, ((mol)*AVOGRADO), molecula))
+                            .format(mol, molecula, peso_molecular, int(BigNumber(mol)*AVOGRADO), molecula))
                         
                         for i, e in enumerate(list(elementos.items())):
-                            quantidade = (mol*AVOGRADO)*int(e[1])
+                            quantidade = int(BigNumber(mol)*AVOGRADO)*int(e[1])
                             print(GUSMOL_DIALOG_LR2.format(quantidade, e[0]))
                         input(GUSMOL_DIALOG_LR3)
                 else:

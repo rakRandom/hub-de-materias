@@ -57,23 +57,31 @@ class LazyImport:
 
 # ==================== Calculadora de números primos ====================
 @lru_cache()
-def f_numerosprimos(limite: int) -> list:
-    try: int(limite)
+def f_numerosprimos(n: int) -> list:
+    try: int(n)
     except: return []
     else:
-        limite = int(limite)
-        lista_de_primos = []
+        # n = int(n)
+        # lista_de_primos = []
 
-        primo = True
-        for numero in range(2, limite+1):
-            for divisor in range(2, numero):
-                if numero%divisor == 0:
-                    primo = False
-            if primo:
-                lista_de_primos.append(numero)
-            primo = True
+        # primo = True
+        # for numero in range(2, n+1):
+        #     for divisor in range(2, numero):
+        #         if numero%divisor == 0:
+        #             primo = False
+        #     if primo:
+        #         lista_de_primos.append(numero)
+        #     primo = True
 
-        return lista_de_primos
+        # return lista_de_primos
+
+        sieve = np.ones(n//3 + (n%6==2), dtype=bool)
+        for i in range(1,int(n**0.5)//3+1):
+            if sieve[i]:
+                k=3*i+1|1
+                sieve[       k*k//3     ::2*k] = False
+                sieve[k*(k-2*(i&1)+4)//3::2*k] = False
+        return np.r_[2,3,((3*np.nonzero(sieve)[0][1:]+1)|1)]
 
 
 # ==================== Calculadora de MMC ====================
