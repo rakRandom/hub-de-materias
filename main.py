@@ -1,57 +1,19 @@
 """Objetivo:
-Treinamento do módulo pygame, com a criação de um jogo do tipo endless runner
-chamado "Runneer", usando como referência e auxílio o vídeo "The ultimate introduction to Pygame"¹
+Criação de um hub com toda a informação que eu possa imaginar, principalmente calculadoras.
+Feito sozinho, porém com a ajuda de diversas pessoas anônimas, por meio de ferramentas como o GitHub¹,
+StackOverFlow² e YouTube³. Toda a documentação e arquivos estão no meu repositório⁴ do GitHub.
 
-Feito por: Fellipe Leonardo Peixoto Cunha²
+Feito por: Fellipe Leonardo Peixoto Cunha
 
 Data de inicio: 07/10/2023
 Data de lançamento: XX/XX/20XX
 
 Referências:
-
-1. https://www.youtube.com/watch?v=AY9MnQ4x3zk
-2. https://github.com/rakRandom
-3. https://www.youtube.com/@ClearCode
-4. https://github.com/clear-code-projects
-
------------------------------------------ Sections Markers -----------------------------------------
-
-Only shows the name of a sub-section - lowest importance - indented
-- '=' 10 times after and before the name
-# ========== Area ==========
-
-
-Only shows the name of a section - low importance - indented
-- '=' 20 times after and before the name
-# ==================== Area ====================
-
-
-Shows the name of a section and that it is not complete or usable - medium importance - indented
-- '/' 20 times after and before the name
-- '/' 60 times when closing the section
-# //////////////////// Under Construction ////////////////////
-# ////////////////////////////////////////////////////////////
-
-
-Shows the name of a section and that it is complete - high importance - indentless
-- 100 col length in total
-# --------------------------------------------- Area ----------------------------------------------
-
-
-Shows that the area is totally complete and only change it to expand with caution - highest importance - indentless
-- '-' 147 times on the line above and below
-- '-' 28 times after, 'BEGGINING OF IMPORTANT AREA - DO NOT CHANGE' in the middle and '-' 74 times after
-- '-' 31 times after, 'END OF IMPORTANT AREA - DO NOT CHANGE' in the middle and '-' 77 times after
-# ---------------------------------------------------------------------------------------------------------------------------------------------------
-# ---------------------------- BEGGINING OF IMPORTANT AREA - DO NOT CHANGE --------------------------------------------------------------------------
-# ---------------------------------------------------------------------------------------------------------------------------------------------------
-
-# ---------------------------------------------------------------------------------------------------------------------------------------------------
-# ------------------------------- END OF IMPORTANT AREA - DO NOT CHANGE -----------------------------------------------------------------------------
-# ---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
------------------------------------------ Sections Markers -----------------------------------------"""
+1. https://github.com/rakRandom
+2. https://stackoverflow.com/users/22330138
+3. https://www.youtube.com/channel/UCjeFvSx21Sp3C1aP5r31M-A
+4. https://github.com/rakRandom/hub-de-materias
+"""
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------
