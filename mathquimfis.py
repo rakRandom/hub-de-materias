@@ -62,25 +62,19 @@ Shows that the area is totally complete and only change it to expand with cautio
 try:
     from config.constants import *
     from config.imports import *
-    from config.functions import *
+    from config.functions import cls, LazyImport
 except: raise ImportError()
 
 # ==================== Matemática ====================
 try:
-    #from modules.numerosprimos import NumerosPrimos
-    #from modules.testeprimo import TestePrimo
-    #from modules.fracaosimples import FracaoSimples
-    #from modules.mmcemdc import MmcEMdc
-
     imp_numerosprimos = LazyImport("modules.numerosprimos")
     imp_testeprimo = LazyImport("modules.testeprimo")
     imp_fracaosimples = LazyImport("modules.fracaosimples")
-    imp_mmcmdc = LazyImport("modules.mmcemdc")
+    imp_mmcmdc = LazyImport("modules.mmcmdc")
 except: raise ImportError()
 
 # ==================== Química ====================
 try:
-    #from modules.gusmol import Gusmol
     imp_gusmol = LazyImport("modules.gusmol")
 except: raise ImportError()
 

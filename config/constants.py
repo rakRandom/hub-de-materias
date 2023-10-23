@@ -27,7 +27,7 @@ MAIN_DIALOG_1 = BARRIER + """
 ||     - numerosprimos.py
 ||     - testeprimo.py
 ||     - fracaosimples.py
-||     - mmcemdc.py
+||     - mmcmdc.py
 ||
 ||     [2] Química:
 ||
@@ -50,7 +50,7 @@ MAIN_DIALOG_M = BARRIER + """
 ||     - Retorna a fração geratriz de uma dízima periódica e
 ||     a fração irredutível de um número decimal.
 ||
-||     [4] mmcemdc.py
+||     [4] mmcmdc.py
 ||     - Recebe dois números e retorna o MMC e MDC deles.
 ||
 """ + BARRIER + "\nR: "
@@ -169,7 +169,7 @@ FRACAOSIMPLES_DIALOG_ND2 = BARRIER + """
 
 MMCEMDC_DIALOG_1 = BARRIER + """
 ||
-||          Digite dois números separados por um espaço:
+||          Digite números separados por um espaço:
 ||           
 """ + BARRIER + "\nR: "
 
